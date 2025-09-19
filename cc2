@@ -1,0 +1,416 @@
+Practical No. 1
+Local Hosting and Network Accessibility of a Web-Based Calculator
+Introduction
+This project demonstrates the fundamental concepts of deploying a web application on a local server and making it accessible to other devices on the same network. It introduces the idea of client-server architecture, a core principle of cloud computing.
+________________________________________
+⚙️ Phase 1: Project Setup
+Objective: Organize the project directory and create the foundational HTML file.
+•	Create a main project directory named CalculatorCloud.
+•	Inside it, create a single file named index.html.
+•	The file contains:
+o	HTML → structure of the calculator.
+o	CSS → styling for user interface.
+o	JavaScript → functional logic for calculations.
+________________________________________
+🌐 Phase 2: Local Hosting
+Objective: Serve the project files from a local machine and make them accessible in a web browser.
+•	Option A (Python):
+1.	Open Command Prompt.
+2.	Navigate to the CalculatorCloud directory.
+3.	Run:
+ 
+ 
+4.	This starts a Python web server on port 8000.
+•	Option B (XAMPP/WAMP):
+1.	Copy the CalculatorCloud folder into the server’s public directory (htdocs for XAMPP).
+2.	Start Apache using the XAMPP/WAMP Control Panel.
+________________________________________
+🌍 Phase 3: Network Configuration and Access
+Objective: Identify the system’s IP and access the calculator from devices on the same network.
+•	Find your system’s IP:
+ 
+Access the calculator from any browser:
+Python server →
+ 
+Apache server →
+ 
+________________________________________
+✅ Phase 4: Verification and Testing
+Objective: Confirm calculator functionality and accessibility.
+•	Functionality Test: Perform arithmetic operations (add, subtract, multiply, divide) to ensure the calculator works.
+•	Network Test: Open the same URL on another device (e.g., smartphone) connected to the same Wi-Fi network to confirm accessibility.
+
+Calculator Code (index.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cloud Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #36d1dc, #5b86e5);
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .calculator {
+      background-color: #ffffff20;
+      padding: 20px;
+      border-radius: 15px;
+      width: 280px;
+      box-shadow: 0 0 10px #00000050;
+    }
+    input[type="text"] {
+      width: 90%;
+      height: 50px;
+      font-size: 24px;
+      text-align: right;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: #fff;
+      color: #000;
+    }
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    button {
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #ffffff50;
+      color: white;
+    }
+    button:hover {
+      background-color: #ffffff80;
+    }
+    .message-box {
+      background-color: #ff6666;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 15px;
+      display: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧮 Cloud Calculator</h1>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <div class="btn-grid">
+      <button onclick="press('7')">7</button>
+      <button onclick="press('8')">8</button>
+      <button onclick="press('9')">9</button>
+      <button onclick="press('/')">/</button>
+
+      <button onclick="press('4')">4</button>
+      <button onclick="press('5')">5</button>
+      <button onclick="press('6')">6</button>
+      <button onclick="press('*')">*</button>
+
+      <button onclick="press('1')">1</button>
+      <button onclick="press('2')">2</button>
+      <button onclick="press('3')">3</button>
+      <button onclick="press('-')">-</button>
+
+      <button onclick="press('0')">0</button>
+      <button onclick="press('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="press('+')">+</button>
+    
+      <button onclick="clearDisplay()" style="grid-column: span 4; background-color: #ff6666;">C</button>
+    </div>
+    <div id="message-box" class="message-box"></div>
+  </div>
+
+  <script>
+    function press(value) {
+      document.getElementById("display").value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById("display").value = "";
+      document.getElementById("message-box").style.display = "none";
+    }
+
+    function calculate() {
+      try {
+        const display = document.getElementById("display");
+        display.value = eval(display.value);
+      } catch (e) {
+        const messageBox = document.getElementById("message-box");
+        messageBox.textContent = "Invalid Expression!";
+        messageBox.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
+
+Output:-
+ 
+
+Output on Phone:
+
+
+
+
+
+
+
+
+
+       
+
+Practical No .2
+Deploying a React Application on Firebase Hosting
+Objective:
+To create a React application, build it for production, and deploy it on Firebase Hosting so that it is accessible via a public URL.
+ 
+ 
+________________________________________
+Step 1: Verify Required Tools
+Ensure Node.js, npm, and Firebase CLI are installed:
+ 
+Note: Firebase CLI version used: 14.17.0
+________________________________________
+Open Step 2: Create a New React Application
+Command Prompt and run:
+ 
+•	new-app is the folder for your React project.
+•	This creates a fresh React application with default templates.
+________________________________________
+Step 3: Customize the React App
+(Optional) Replace the default React template with your content. Edit src/App.js:
+ 
+Save the file after editing.
+________________________________________
+Step 4: Build the React Application
+ 
+This creates a build/ folder containing production-ready files (index.html, static/, etc.).
+________________________________________
+Step 5: Test Locally (Optional)
+Install serve globally:
+ 
+Serve the build folder:
+ 
+•	Open the local URL shown (e.g., http://localhost:5000) to verify the app works locally.
+________________________________________
+Step 6: Initialize Firebase Hosting
+ 
+ 
+Follow the prompts carefully:
+1.	Select existing project or create a new project.
+2.	Public directory: type build ✅
+3.	Configure as single-page app? → Yes ✅
+4.	Set up GitHub deploys? → No
+5.	Overwrite index.html? → No
+This will create:
+•	firebase.json
+•	.firebaserc
+________________________________________
+Step 7: Verify firebase.json Configuration
+Ensure firebase.json looks like this:
+ 
+✅ "public": "build" ensures Firebase serves your React app.
+✅ rewrites make React routing work properly.
+________________________________________
+Step 8: Deploy to Firebase
+ 
+After deployment, Firebase provides a Hosting URL:
+ 
+ 
+Open the URL in a browser → your React app is live online.
+________________________________________
+Step 9: Notes & Troubleshooting
+1.	Always run commands inside the React project folder (cd new-app).
+2.	Build your app before deploying (npm run build).
+3.	Ensure Firebase points to the build/ folder, not public/.
+4.	Single-page app rewrites are required for React routing.
+5.	Seeing the React logo is normal for a new React app. Replace App.js with custom content to see your project.
+ 
+
+Practical No .3
+Uploading a File to AWS S3 and Generating a Pre-Signed URL
+Objective
+To create an Amazon S3 bucket, upload a file into it, and generate a pre-signed URL that can be used to access the file securely.
+________________________________________
+Step 1: Log in to AWS Console
+1.	Open AWS Management Console.
+2.	Sign in with your AWS credentials.
+3.	Navigate to Services → S3.
+ 
+Step 2: Create an S3 Bucket
+1.	Click Create bucket.
+2.	Enter a unique bucket name (e.g., my-practical3-bucket).
+3.	Choose a region (e.g., Asia Pacific (Mumbai)).
+4.	Leave other settings as default (Block Public Access ON).
+5.	Click Create bucket.
+ 
+ 
+ 
+✅ Your bucket is created successfully.
+________________________________________
+Step 3: Upload a File to the Bucket
+1.	Open the bucket you created.
+2.	Click Upload → Add files.
+3.	Select the file, e.g., insperity.jpg.
+4.	Click Upload.
+✅ Your file is now inside the bucket.
+ 
+________________________________________
+
+Step 4: Generate a Pre-Signed URL
+There are two ways:
+Option A: Using AWS Console
+1.	Select the uploaded file (insperity.jpg).
+2.	Click Actions → Share with a presigned URL.
+3.	Choose expiry duration (e.g., 1 hour).
+4.	AWS generates the URL and copies it to your clipboard.
+ 
+________________________________________
+
+Step 5: Verify the Pre-Signed URL
+1.	Paste the generated URL into your browser.
+2.	The file (insperity.jpg) should download or open.
+ 
+ 
+After time limit is over is shows:
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Practical No .4
+Creating an IAM User in AWS Console with S3-only Permissions
+________________________________________
+Objective
+To create a new IAM user in AWS Management Console and assign permissions so that the user can only access Amazon S3 services.
+________________________________________
+Step 1 – Sign in to AWS Console
+1.	Open AWS Management Console.
+2.	Log in with your root account or an IAM account that has admin privileges.
+________________________________________
+Step 2 – Open IAM Service
+1.	In the search bar at the top, type IAM.
+2.	Click on IAM (Identity and Access Management).
+ 
+________________________________________
+Step 3 – Add a New User
+1.	In the IAM dashboard, click Users from the left sidebar.
+2.	Click Add users button.
+3.	Enter a username (e.g., s3-only-user).
+4.	Select Password - AWS Management Console access so the user can log in.
+o	You may also choose Access key - Programmatic access if you want them to use CLI/SDK.
+
+ 
+________________________________________
+Step 4 – Set Permissions
+1.	Choose Attach policies directly.
+2.	Search for AmazonS3FullAccess or AmazonS3ReadOnlyAccess (depending on what you want).
+o	Select AmazonS3FullAccess if the user should be able to upload/download/delete.
+o	Select AmazonS3ReadOnlyAccess if they should only be able to view/download.
+3.	Click Next.
+ 
+________________________________________
+Step 5 – Review and Create User
+1.	Review the details.
+2.	Click Create user.
+3.	You’ll get the login credentials (username and password / access keys).
+o	Download the .csv file for future use.
+
+ 
+ 
+ 
+
+
+Practical 5
+Hosting a Web Page on EC2 (Amazon Linux 2)
+Objective
+To set up an Apache web server on an Amazon EC2 instance running Amazon Linux 2, upload an HTML page, and access it via the browser.
+________________________________________
+Step 1 – Connect to EC2 Instance
+Use the following command from your terminal to connect to your EC2 instance:
+ 
+•	Replace /path/to/your-key.pem with the path of your key file.
+•	Replace <your-ec2-public-ip> with the public IP of your EC2 instance (from AWS Console).
+________________________________________
+Step 2 – Update Package Manager
+•	Update all packages to the latest version:
+ 
+________________________________________
+Step 3 – Install Apache (Web Server)
+Install Apache (httpd):
+ 
+Start Apache and enable it to run at boot:
+ 
+ 
+If firewall is enabled, allow HTTP traffic:
+ 
+________________________________________
+Step 4 – Add Your HTML Page
+Navigate to Apache’s web root:
+ 
+Create or edit the index.html file:
+ 
+ 
+Paste the following HTML code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to EC2</title>
+</head>
+<body>
+    Hello EveryOne from EC2 instance! <br><br>
+    This is a simple web server running on Amazon Linux 2.
+</body>
+</html>
+Save and exit Nano:
+•	Ctrl + O → Press Enter → Ctrl + X
+________________________________________
+Step 5 – Configure Inbound Security Group Rules
+To allow HTTP (port 80) access from the internet:
+1.	Open AWS Console → EC2.
+2.	Select your running instance.
+3.	Scroll down to Security groups and click on it.
+4.	Go to the Inbound rules tab.
+5.	Click Edit inbound rules.
+6.	Add a new rule:
+o	Type: HTTP
+o	Port: 80
+o	Source: Anywhere (0.0.0.0/0) → or restrict to your IP.
+7.	Click Save rules.
+✅ Now your EC2 instance is accessible over HTTP.
+ 
+ 
+ 
+________________________________________
+Step 6 – Access Your Website
+•	Open your browser and go to:
+ 
+You should now see your custom HTML page served from Apache on EC2.
+ 
