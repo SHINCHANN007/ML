@@ -56,6 +56,8 @@ click win+R
 
 http://[Your-PC-IP]:[Port]/Cal.html
 
+python3 -m http.server 8000
+
 -------------------------------------------
 
 npx create-react-app myapp
