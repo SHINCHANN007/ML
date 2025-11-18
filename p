@@ -1,13 +1,1 @@
-$code = @"
-import google.generativeai as genai
-import os
-
-API_KEY = "YOUR_KEY_HERE"
-genai.configure(api_key='AIzaSyBoQlXkv_fXd1j5w_IvNJl1ju_Or_68aIw')
-
-model = genai.GenerativeModel("gemini-2.5-flash")
-response = model.generate_content("here")
-print(response.text)
-"@
-
-python -c $code
+python -c 'import google.generativeai as genai; import os; os.environ["GRPC_VERBOSITY"]="NONE"; os.environ["GRPC_ENABLE_FORK_SUPPORT"]="0"; API_KEY="AIzaSyBoQlXkv_fXd1j5w_IvNJl1ju_Or_68aIw"; genai.configure(api_key=API_KEY); model=genai.GenerativeModel("gemini-2.5-flash"); response=model.generate_content("here"); print(response.text)'
