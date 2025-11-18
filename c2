@@ -1,4 +1,6 @@
-python3 -c "import google.generativeai as genai; import os; os.environ['GRPC_VERBOSITY']='NONE'; os.environ['GRPC_ENABLE_FORK_SUPPORT']='0'; 
-API_KEY='AIzaSyBoQlXkv_fXd1j5w_IvNJl1ju_Or_68aIw'; genai.configure(api_key=API_KEY); model=genai.GenerativeModel('gemini-2.5-flash'); 
-response=model.generate_content('Provide R code to calculate the probability of getting more than 5 successes in 100 trials if success rate is 0.05.'); 
+python3 -c "import google.generativeai as genai; 
+import os; os.environ['GRPC_VERBOSITY']='NONE'; os.environ['GRPC_ENABLE_FORK_SUPPORT']='0'; 
+API_KEY='AIzaSyBoQlXkv_fXd1j5w_IvNJl1ju_Or_68aIw'; 
+genai.configure(api_key=API_KEY); model=genai.GenerativeModel('gemini-2.5-flash'); 
+response=model.generate_content('  here  '); 
 print(response.text)"
